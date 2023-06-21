@@ -4,7 +4,6 @@ import { Home } from './pages/Home';
 import { Podcast } from './pages/Podcast';
 import { Episode } from './pages/Episode';
 import { Header } from './components/Header';
-import './App.css';
 
 function App() {
   return (
