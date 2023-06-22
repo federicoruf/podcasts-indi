@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { usePodcast } from '../hooks/usePodcast';
 import classNames from 'classnames';
+import { formatDate, formatMilliseconds } from '../utlis';
 
 export const PodcastEpisodesList = () => {
   const { podcastId } = useParams();
@@ -17,7 +18,7 @@ export const PodcastEpisodesList = () => {
   }, []);
 
   return (
-    <div className='flex flex-col grow w-3/4'>
+    <div className='flex flex-col grow w-3/4 ml-12'>
       <div className='shadow-lg shadow-black-500/20 card flex flex-col text-lg mb-4 pb-2'>
         <div className='font-bold'> Episodes: {podcastEpisodes.length}</div>
       </div>
@@ -43,10 +44,12 @@ export const PodcastEpisodesList = () => {
                   {episode.trackName}
                 </td>
                 <td className='whitespace-nowrap pl-2 py-3'>
-                  {episode.releaseDate}
+                  {formatDate(episode.releaseDate)}
                 </td>
                 <td className='whitespace-nowrap pl-2 py-3'>
-                  {episode.trackTimeMillis ? episode.trackTimeMillis : '-'}
+                  {episode.trackTimeMillis
+                    ? formatMilliseconds(episode.trackTimeMillis)
+                    : '-'}
                 </td>
               </tr>
             ))}
