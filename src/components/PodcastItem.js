@@ -1,9 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-export const PodcastItem = ({ name, artist, image }) => {
+export const PodcastItem = ({ id, name, artist, image }) => {
+  const navigate = useNavigate();
+
+  const showPodcastDetails = () => {
+    navigate(`/podcast/${id}`);
+  };
+
   return (
-    <div className='shadow-lg shadow-black-500/20 card flex flex-col my-16 w-60'>
+    <div
+      className='shadow-lg shadow-black-500/20 card flex flex-col my-16 w-60'
+      onClick={showPodcastDetails}
+    >
       <div className='self-center relative -top-16'>
         <img className='rounded-full h-36' src={image} alt='label' />
       </div>

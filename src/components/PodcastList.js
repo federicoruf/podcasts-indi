@@ -4,7 +4,7 @@ import { PodcastItem } from './PodcastItem';
 import { usePodcast } from '../hooks/usePodcast';
 
 export const PodcastList = ({ filter = '', setResults }) => {
-  const [podcasts] = usePodcast();
+  const { podcasts } = usePodcast();
 
   const [displayPodcasts, setDisplayPodcasts] = useState([]);
 

@@ -37,5 +37,20 @@ export const usePodcast = () => {
     }
   }, []);
 
-  return [podcasts];
+  const getPodcastDetails = (podcastId) => {
+    const podcastList = JSON.parse(localStorage.getItem('podcasts'));
+    return podcastList.find((podcast) => podcast.id === podcastId);
+  };
+
+  const getPodcastEpisodes = async (podcastId) => {
+    const localStoragePodcast = localStorage.getItem(podcastId);
+    if (localStoragePodcast) {
+      return JSON.parse(localStoragePodcast);
+    }
+    const resultService = await itunesService.getPodcastDetails(podcastId);
+    localStorage.setItem(podcastId, JSON.stringify(resultService));
+    return resultService;
+  };
+
+  return { podcasts, getPodcastDetails, getPodcastEpisodes };
 };
