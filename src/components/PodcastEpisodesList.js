@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { usePodcast } from '../hooks/usePodcast';
 import classNames from 'classnames';
 import { formatDate, formatMilliseconds } from '../utlis';
@@ -41,7 +41,9 @@ export const PodcastEpisodesList = () => {
                 })}
               >
                 <td className='whitespace-nowrap pl-2 py-3 text-teal-500'>
-                  {episode.trackName}
+                  <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>
+                    {episode.trackName}
+                  </Link>
                 </td>
                 <td className='whitespace-nowrap pl-2 py-3'>
                   {formatDate(episode.releaseDate)}

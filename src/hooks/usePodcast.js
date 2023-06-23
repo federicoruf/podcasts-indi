@@ -52,5 +52,10 @@ export const usePodcast = () => {
     return resultService;
   };
 
-  return { podcasts, getPodcastDetails, getPodcastEpisodes };
+  const getEpisode = (podcastId, episodeId) => {
+    const podcastEpisodes = JSON.parse(localStorage.getItem(podcastId));
+    return podcastEpisodes.find((episode) => episode.trackId === +episodeId);
+  };
+
+  return { podcasts, getPodcastDetails, getPodcastEpisodes, getEpisode };
 };
