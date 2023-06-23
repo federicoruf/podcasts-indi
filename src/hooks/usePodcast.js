@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import itunesService from '../services/itunes';
 
-export const usePodcast = () => {
+export const usePodcast = (switchLoading) => {
   const [podcasts, setPodcasts] = useState([]);
-  const [fetching, setFetching] = useState(false);
 
   const extractPodcastData = (podcasts) =>
     podcasts.map((podcast) => {
@@ -26,11 +25,11 @@ export const usePodcast = () => {
       const formattedPodcasts = extractPodcastData(resultService);
       localStorage.setItem('podcasts', JSON.stringify(formattedPodcasts));
       setPodcasts(formattedPodcasts);
-      setFetching(false);
+      switchLoading(false);
     };
     const podcastList = localStorage.getItem('podcasts');
-    if (!podcastList && !fetching) {
-      setFetching(true);
+    if (!podcastList) {
+      switchLoading(true);
       fetchData();
     } else {
       setPodcasts(JSON.parse(podcastList));
@@ -47,8 +46,10 @@ export const usePodcast = () => {
     if (localStoragePodcast) {
       return JSON.parse(localStoragePodcast);
     }
+    switchLoading(true);
     const resultService = await itunesService.getPodcastDetails(podcastId);
     localStorage.setItem(podcastId, JSON.stringify(resultService));
+    switchLoading(false);
     return resultService;
   };
 
@@ -57,5 +58,10 @@ export const usePodcast = () => {
     return podcastEpisodes.find((episode) => episode.trackId === +episodeId);
   };
 
-  return { podcasts, getPodcastDetails, getPodcastEpisodes, getEpisode };
+  return {
+    podcasts,
+    getPodcastDetails,
+    getPodcastEpisodes,
+    getEpisode,
+  };
 };

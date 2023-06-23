@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { usePodcast } from '../hooks/usePodcast';
 import classNames from 'classnames';
 import { formatDate, formatMilliseconds } from '../utlis';
+import { LoadingContext } from '../LoadingContext';
 
 export const PodcastEpisodesList = () => {
+  const { switchLoading } = useContext(LoadingContext);
   const { podcastId } = useParams();
-  const { getPodcastEpisodes } = usePodcast();
+  const { getPodcastEpisodes } = usePodcast(switchLoading);
   const [podcastEpisodes, setPodcastEpisodes] = useState([]);
 
   useEffect(() => {

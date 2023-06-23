@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { PodcastItem } from './PodcastItem';
 import { usePodcast } from '../hooks/usePodcast';
+import { LoadingContext } from '../LoadingContext';
 
 export const PodcastList = ({ filter = '', setResults }) => {
-  const { podcasts } = usePodcast();
+  const { switchLoading } = useContext(LoadingContext);
+  const { podcasts } = usePodcast(switchLoading);
 
   const [displayPodcasts, setDisplayPodcasts] = useState([]);
 
