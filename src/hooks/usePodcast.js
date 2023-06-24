@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import itunesService from '../services/itunes';
+import { hasPassedTimeLimit } from '../utils';
 
 export const usePodcast = (switchLoading) => {
   const [podcasts, setPodcasts] = useState([]);
@@ -21,41 +22,56 @@ export const usePodcast = (switchLoading) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      switchLoading(true);
       const resultService = await itunesService.getTopPodcasts();
-      const formattedPodcasts = extractPodcastData(resultService);
-      localStorage.setItem('podcasts', JSON.stringify(formattedPodcasts));
-      setPodcasts(formattedPodcasts);
+      const list = extractPodcastData(resultService);
+      const requestTime = new Date().getTime();
+      localStorage.setItem('podcasts', JSON.stringify({ list, requestTime }));
+      setPodcasts(list);
       switchLoading(false);
     };
     const podcastList = localStorage.getItem('podcasts');
     if (!podcastList) {
-      switchLoading(true);
       fetchData();
     } else {
-      setPodcasts(JSON.parse(podcastList));
+      const podcastListParsed = JSON.parse(podcastList);
+      if (hasPassedTimeLimit(podcastListParsed.requestTime)) {
+        fetchData();
+      } else {
+        setPodcasts(podcastListParsed.list);
+      }
     }
   }, []);
 
   const getPodcastDetails = (podcastId) => {
-    const podcastList = JSON.parse(localStorage.getItem('podcasts'));
-    return podcastList.find((podcast) => podcast.id === podcastId);
+    const { list } = JSON.parse(localStorage.getItem('podcasts'));
+    return list.find((podcast) => podcast.id === podcastId);
+  };
+
+  const onRequestDetails = async (podcastId) => {
+    switchLoading(true);
+    const details = await itunesService.getPodcastDetails(podcastId);
+    const requestTime = new Date().getTime();
+    localStorage.setItem(podcastId, JSON.stringify({ details, requestTime }));
+    switchLoading(false);
+    return details;
   };
 
   const getPodcastEpisodes = async (podcastId) => {
     const localStoragePodcast = localStorage.getItem(podcastId);
     if (localStoragePodcast) {
-      return JSON.parse(localStoragePodcast);
+      const parsedPodcast = JSON.parse(localStoragePodcast);
+      if (hasPassedTimeLimit(parsedPodcast.requestTime)) {
+        return onRequestDetails(podcastId);
+      }
+      return parsedPodcast.details;
     }
-    switchLoading(true);
-    const resultService = await itunesService.getPodcastDetails(podcastId);
-    localStorage.setItem(podcastId, JSON.stringify(resultService));
-    switchLoading(false);
-    return resultService;
+    return onRequestDetails(podcastId);
   };
 
   const getEpisode = (podcastId, episodeId) => {
-    const podcastEpisodes = JSON.parse(localStorage.getItem(podcastId));
-    return podcastEpisodes.find((episode) => episode.trackId === +episodeId);
+    const { details } = JSON.parse(localStorage.getItem(podcastId));
+    return details.find((episode) => episode.trackId === +episodeId);
   };
 
   return {
