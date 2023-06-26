@@ -20,11 +20,34 @@ export const usePodcast = (switchLoading) => {
       return { id, name, artist, description, imageUrl };
     });
 
+  const extractEpisodeData = (episodes) =>
+    episodes.map((episode) => {
+      const {
+        description,
+        episodeUrl,
+        kind,
+        trackId,
+        trackName,
+        trackTimeMillis,
+      } = episode;
+      return {
+        description,
+        episodeUrl,
+        kind,
+        trackId,
+        trackName,
+        trackTimeMillis,
+      };
+    });
+
   const onRequestDetails = async (podcastId) => {
     switchLoading(true);
     const details = await itunesService.getPodcastDetails(podcastId);
+    const formattedEpisodes = extractEpisodeData(details);
     const requestTime = new Date().getTime();
-    const episodes = details.filter((item) => item.kind === 'podcast-episode');
+    const episodes = formattedEpisodes.filter(
+      (item) => item.kind === 'podcast-episode'
+    );
     localStorage.setItem(podcastId, JSON.stringify({ episodes, requestTime }));
     switchLoading(false);
     return episodes;
@@ -65,7 +88,7 @@ export const usePodcast = (switchLoading) => {
       if (hasPassedTimeLimit(parsedPodcast.requestTime)) {
         return onRequestDetails(podcastId);
       }
-      return parsedPodcast.details;
+      return parsedPodcast.episodes;
     }
     return onRequestDetails(podcastId);
   };

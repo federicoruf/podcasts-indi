@@ -28,10 +28,7 @@ export const EpisodePlayer = () => {
             dangerouslySetInnerHTML={{ __html: displayEpisode.description }}
           />
           <audio controls className='pb-3 w-full' data-testid='episode-player'>
-            <source
-              src={formatURL(displayEpisode.previewUrl)}
-              type='audio/mp3'
-            />
+            <source src={formatURL()} type='audio/mp3' />
           </audio>
         </div>
       )}

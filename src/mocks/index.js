@@ -21,92 +21,24 @@ export const mockPodcasts = [
 
 export const mockPodcastEpisodes = [
   {
-    country: 'USA',
-    artworkUrl600:
-      'https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/600x600bb.jpg',
-    artworkUrl60:
-      'https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/60x60bb.jpg',
-    artistViewUrl:
-      'https://itunes.apple.com/us/artist/the-joe-budden-network/1535844019?mt=2&uo=4',
-    contentAdvisoryRating: 'Explicit',
-    trackViewUrl:
-      'https://podcasts.apple.com/us/podcast/episode-637-crevices/id1535809341?i=1000617803512&uo=4',
     trackId: 1000617803512,
     trackName: 'Episode 637 | "Crevices"',
-    shortDescription:
-      'The Bionic Six is back in full force as the gang starts by recapping their Father’s Day (11:15) before turning to Rico Love (24:10) and Russell Simmons (28:35) being outed by their ex’s over the holiday weekend. Ice addresses the JBP’s takes on...',
-    closedCaptioning: 'none',
-    artistIds: [1535844019],
-    collectionViewUrl:
-      'https://itunes.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?mt=2&uo=4',
     trackTimeMillis: 12350000,
     description:
       'The Bionic Six is back in full force as the gang starts by recapping their Father’s Day (11:15) before turning to Rico Love (24:10) and Russell Simmons (28:35) being outed by their ex’s over the holiday weekend. Ice addresses the JBP’s takes on the YK Osiris news from the last pod (1:03:17), a submarine slated to view the Titanic wreckage has gone missing (1:06:46), and Michael Jordan has sold his majority stake in the Charlotte Hornets (1:16:30). Also, an ex-Starbucks manager was awarded $25.6 million in a lawsuit over her firing (1:25:43), Ice talks about his vacation (1:53:20), Colts linebacker Zaire Franklin returns (1:58:50), Part of the Show (2:42:22), + MORE! \n  \n Become a Patron of The Joe Budden Podcast for additional bonus episodes and visual content for all things JBP.: Tap in here www.patreon.com/JoeBudden\n  \n Sleeper Picks: \n Joe | PHABO (feat. Arin Ray) - “Stay”\n Ice | Arsonal da Rebel (feat. Symba) - “Slow Down”\n Parks | The Legendary Traxster & IAMGAWD  - “The Master and the Student”\n Ish | Gen Neo - “Called It Love”\n Melyssa | Dijon - “The Dress”\n Zaire | Leaf Ward - “F**k Khalif”',
-    previewUrl:
-      'https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_637.mp3?dest-id=2422538',
-    releaseDate: '2023-06-21T07:30:00Z',
-    collectionId: 1535809341,
-    collectionName: 'The Joe Budden Podcast',
-    feedUrl: 'https://jbpod.libsyn.com/applepodcast',
     episodeUrl:
       'https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_637.mp3?dest-id=2422538',
-    episodeContentType: 'audio',
-    artworkUrl160:
-      'https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/160x160bb.jpg',
-    episodeFileExtension: 'mp3',
-    genres: [
-      {
-        name: 'Music',
-        id: '1310',
-      },
-    ],
-    episodeGuid: '79b19055-99ef-4ab7-973a-c074432558e6',
     kind: 'podcast-episode',
-    wrapperType: 'podcastEpisode',
   },
   {
-    country: 'USA',
-    episodeUrl:
-      'https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_636.mp3?dest-id=2422538',
-    feedUrl: 'https://jbpod.libsyn.com/applepodcast',
-    closedCaptioning: 'none',
-    collectionId: 1535809341,
-    collectionName: 'The Joe Budden Podcast',
-    episodeGuid: '0d6724ac-9ba1-46a9-818e-861b0cd11abe',
-    genres: [
-      {
-        name: 'Music',
-        id: '1310',
-      },
-    ],
-    episodeFileExtension: 'mp3',
-    episodeContentType: 'audio',
     trackId: 1000617345765,
     trackName: 'Episode 636 | "The Funcast"',
-    artistIds: [1535844019],
+    trackTimeMillis: 12554000,
     description:
       'The JBP kicks off this episode discussing new music that was released, including Gunna’s ‘a Gift & a Curse’ (26:27) and Killer Mike’s project ‘MICHAEL’ (37:00). YK Osiris is accused of sexual assault after a run-in with Sukihana as videos surfaced on social media (50:38), the gang reacts to Meek Mill’s tweets (1:01:18), and Ja Morant has officially received a 25-game suspension from the NBA (1:21:43). Also, the latest on the YNW Melly trial (1:38:07), Killer Mike joins the podcast (1:50:33) to discuss his new album (1:59:55), his upbringing in Atlanta (2:19:55), + MORE! \n Become a Patron of The Joe Budden Podcast for additional bonus episodes and visual content for all things JBP.: Tap in here www.patreon.com/JoeBudden\n  \n Sleeper Picks: \n Joe | Maeta - “F**k Your Friend”\n Parks | femdot. | “2003”\n Ish | Kiana Ledé (feat. Bryson Tiller) - “Gone”\n Melyssa | Doja Cat | “Attention”',
-    releaseDate: '2023-06-17T07:00:00Z',
-    previewUrl:
+    episodeUrl:
       'https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_636.mp3?dest-id=2422538',
-    shortDescription:
-      'The JBP kicks off this episode discussing new music that was released, including Gunna’s ‘a Gift & a Curse’ (26:27) and Killer Mike’s project ‘MICHAEL’ (37:00). YK Osiris is accused of sexual assault after a run-in with Sukihana as...',
-    artworkUrl160:
-      'https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/160x160bb.jpg',
-    artworkUrl600:
-      'https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/600x600bb.jpg',
-    trackTimeMillis: 12554000,
-    contentAdvisoryRating: 'Clean',
-    artworkUrl60:
-      'https://is2-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/60x60bb.jpg',
-    artistViewUrl:
-      'https://itunes.apple.com/us/artist/the-joe-budden-network/1535844019?mt=2&uo=4',
-    collectionViewUrl:
-      'https://itunes.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?mt=2&uo=4',
-    trackViewUrl:
-      'https://podcasts.apple.com/us/podcast/episode-636-the-funcast/id1535809341?i=1000617345765&uo=4',
     kind: 'podcast-episode',
-    wrapperType: 'podcastEpisode',
   },
 ];
 

@@ -57,14 +57,13 @@ describe('PodcastEpisodesList', () => {
         )
     );
 
-    const { trackName, trackId, collectionId } = mockPodcastEpisodes[0];
+    const { trackName, trackId } = mockPodcastEpisodes[0];
+    const { id } = mockPodcasts[0];
 
     const links = screen.getAllByRole('link', {
       name: trackName,
     });
     fireEvent.click(links[0]);
-    expect(window.location.pathname).toBe(
-      `/podcast/${collectionId}/episode/${trackId}`
-    );
+    expect(window.location.pathname).toBe(`/podcast/${id}/episode/${trackId}`);
   });
 });
