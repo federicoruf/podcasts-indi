@@ -35,7 +35,7 @@ export const PodcastEpisodesList = () => {
                   <th className='py-3 pl-2'>Duration</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid='podcastEpisodes'>
                 {podcastEpisodes.map((episode, index) => (
                   <tr
                     key={episode.trackId}

@@ -20,6 +20,16 @@ export const usePodcast = (switchLoading) => {
       return { id, name, artist, description, imageUrl };
     });
 
+  const onRequestDetails = async (podcastId) => {
+    switchLoading(true);
+    const details = await itunesService.getPodcastDetails(podcastId);
+    const requestTime = new Date().getTime();
+    const episodes = details.filter((item) => item.kind === 'podcast-episode');
+    localStorage.setItem(podcastId, JSON.stringify({ episodes, requestTime }));
+    switchLoading(false);
+    return episodes;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       switchLoading(true);
@@ -48,15 +58,6 @@ export const usePodcast = (switchLoading) => {
     return list.find((podcast) => podcast.id === podcastId);
   };
 
-  const onRequestDetails = async (podcastId) => {
-    switchLoading(true);
-    const details = await itunesService.getPodcastDetails(podcastId);
-    const requestTime = new Date().getTime();
-    localStorage.setItem(podcastId, JSON.stringify({ details, requestTime }));
-    switchLoading(false);
-    return details;
-  };
-
   const getPodcastEpisodes = async (podcastId) => {
     const localStoragePodcast = localStorage.getItem(podcastId);
     if (localStoragePodcast) {
@@ -70,8 +71,8 @@ export const usePodcast = (switchLoading) => {
   };
 
   const getEpisode = (podcastId, episodeId) => {
-    const { details } = JSON.parse(localStorage.getItem(podcastId));
-    return details.find((episode) => episode.trackId === +episodeId);
+    const { episodes } = JSON.parse(localStorage.getItem(podcastId));
+    return episodes.find((episode) => episode.trackId === +episodeId);
   };
 
   return {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { PodcastItem } from './PodcastItem';
 import { usePodcast } from '../hooks/usePodcast';
@@ -8,24 +8,27 @@ export const PodcastList = ({ filter = '', setResults }) => {
   const { switchLoading } = useContext(LoadingContext);
   const { podcasts } = usePodcast(switchLoading);
 
-  const [displayPodcasts, setDisplayPodcasts] = useState([]);
-
-  useEffect(() => {
+  const displayPodcasts = useMemo(() => {
     if (podcasts.length > 0) {
       if (filter) {
-        const filteredPodcast = podcasts.filter(
+        return podcasts.filter(
           ({ name, artist }) =>
             name.toLowerCase().includes(filter) ||
             artist.toLowerCase().includes(filter)
         );
-        setDisplayPodcasts(filteredPodcast);
-        setResults(filteredPodcast.length);
       } else {
-        setDisplayPodcasts(podcasts);
-        setResults(podcasts.length);
+        return podcasts;
       }
+    } else {
+      return [];
     }
   }, [filter, podcasts]);
+
+  useEffect(() => {
+    if (podcasts.length > 0) {
+      setResults(displayPodcasts.length);
+    }
+  }, [displayPodcasts]);
 
   return (
     <div className='flex flex-row flex-wrap mx-10 justify-center'>

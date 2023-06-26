@@ -15,7 +15,7 @@ export const PodcastItem = ({ id, name, artist, image }) => {
       onClick={showPodcastDetails}
     >
       <div className='self-center relative -top-16'>
-        <img className='rounded-full h-36' src={image} alt='label' />
+        <img className='rounded-full h-36' src={image} alt={`${name}-image`} />
       </div>
       <div className='relative -top-12'>
         <div className='font-bold text-sm'>{name.toUpperCase()}</div>

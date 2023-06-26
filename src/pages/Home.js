@@ -13,7 +13,10 @@ export const Home = () => {
   return (
     <div className='flex flex-col pt-2'>
       <div className='self-end'>
-        <span className='bg-blue-600 text-white rounded-md px-2 mr-3'>
+        <span
+          className='bg-blue-600 text-white rounded-md px-2 mr-3'
+          data-testid='result-value'
+        >
           {results}
         </span>
         <input
