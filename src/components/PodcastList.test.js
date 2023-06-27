@@ -1,6 +1,5 @@
 import React from 'react';
 import { act, render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import { PodcastList } from './PodcastList';
 import { LoadingContext } from '../LoadingContext';
 import { mockPodcasts } from '../mocks';

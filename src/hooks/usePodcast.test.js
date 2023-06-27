@@ -1,11 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { usePodcast } from './usePodcast';
-import {
-  mockDetails,
-  mockPodcastEpisodes,
-  mockPodcasts,
-  mockTopPodcast,
-} from '../mocks';
+import { mockPodcastEpisodes, mockPodcasts, mockTopPodcast } from '../mocks';
 import itunesService from '../services/itunes';
 
 jest.mock('../services/itunes', () => ({

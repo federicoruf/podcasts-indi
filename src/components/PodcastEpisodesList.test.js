@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { LoadingContext } from '../LoadingContext';
 import { mockPodcastEpisodes, mockPodcasts } from '../mocks';
 import { PodcastEpisodesList } from './PodcastEpisodesList';
