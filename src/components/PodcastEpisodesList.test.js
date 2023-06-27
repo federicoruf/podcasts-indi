@@ -19,21 +19,24 @@ jest.mock('../hooks/usePodcast', () => ({
   }),
 }));
 
+async function renderComponent() {
+  let loading = false;
+
+  await act(
+    async () =>
+      await render(
+        <LoadingContext.Provider value={{ loading }}>
+          <BrowserRouter>
+            <PodcastEpisodesList />
+          </BrowserRouter>
+        </LoadingContext.Provider>
+      )
+  );
+}
+
 describe('PodcastEpisodesList', () => {
   test('renders podcast episodes', async () => {
-    let loading = false;
-
-    await act(
-      async () =>
-        await render(
-          <LoadingContext.Provider value={{ loading }}>
-            <BrowserRouter>
-              <PodcastEpisodesList />
-            </BrowserRouter>
-          </LoadingContext.Provider>
-        )
-    );
-
+    await renderComponent();
     const rows = within(screen.getByTestId('podcastEpisodes')).getAllByRole(
       'row'
     );
@@ -43,19 +46,9 @@ describe('PodcastEpisodesList', () => {
       expect(trackName).toBeInTheDocument();
     }
   });
-  test('on selecting a podcast episodes, user is redirected', async () => {
-    let loading = false;
 
-    await act(
-      async () =>
-        await render(
-          <LoadingContext.Provider value={{ loading }}>
-            <BrowserRouter>
-              <PodcastEpisodesList />
-            </BrowserRouter>
-          </LoadingContext.Provider>
-        )
-    );
+  test('on selecting a podcast episodes, user is redirected', async () => {
+    await renderComponent();
 
     const { trackName, trackId } = mockPodcastEpisodes[0];
     const { id } = mockPodcasts[0];

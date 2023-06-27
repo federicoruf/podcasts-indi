@@ -19,9 +19,7 @@ describe('PodcastList', () => {
     act(() => {
       render(
         <LoadingContext.Provider value={{ switchLoading: switchLoadingMock }}>
-          <BrowserRouter>
-            <PodcastList filter={''} setResults={setResultsMock} />
-          </BrowserRouter>
+          <PodcastList filter={''} setResults={setResultsMock} />
         </LoadingContext.Provider>
       );
     });

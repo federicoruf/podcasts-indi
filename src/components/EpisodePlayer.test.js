@@ -25,9 +25,7 @@ describe('EpisodePlayer', () => {
     const episode = mockPodcastEpisodes[0];
     render(
       <LoadingContext.Provider value={{ switchLoading: switchLoadingMock }}>
-        <BrowserRouter>
-          <EpisodePlayer />
-        </BrowserRouter>
+        <EpisodePlayer />
       </LoadingContext.Provider>
     );
 
