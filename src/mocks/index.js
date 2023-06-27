@@ -29,6 +29,7 @@ export const mockPodcastEpisodes = [
     episodeUrl:
       'https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_637.mp3?dest-id=2422538',
     kind: 'podcast-episode',
+    releaseDate: '2023-05-26T00:27:25Z',
   },
   {
     trackId: 1000617345765,
@@ -39,6 +40,7 @@ export const mockPodcastEpisodes = [
     episodeUrl:
       'https://traffic.libsyn.com/secure/jbpod/Joe_Budden_Podcast_636.mp3?dest-id=2422538',
     kind: 'podcast-episode',
+    releaseDate: '2023-05-26T00:27:25Z',
   },
 ];
 

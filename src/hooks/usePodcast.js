@@ -26,6 +26,7 @@ export const usePodcast = (switchLoading) => {
         description,
         episodeUrl,
         kind,
+        releaseDate,
         trackId,
         trackName,
         trackTimeMillis,
@@ -34,6 +35,7 @@ export const usePodcast = (switchLoading) => {
         description,
         episodeUrl,
         kind,
+        releaseDate,
         trackId,
         trackName,
         trackTimeMillis,
@@ -42,7 +44,7 @@ export const usePodcast = (switchLoading) => {
 
   const onRequestDetails = async (podcastId) => {
     switchLoading(true);
-    const details = await itunesService.getPodcastDetails(podcastId);
+    const details = await itunesService.getPodcastEpisodes(podcastId);
     const formattedEpisodes = extractEpisodeData(details);
     const requestTime = new Date().getTime();
     const episodes = formattedEpisodes.filter(

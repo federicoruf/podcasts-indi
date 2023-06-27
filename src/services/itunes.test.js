@@ -1,6 +1,6 @@
 import { mockDetails, mockTopPodcast } from '../mocks';
 import itunesService from './itunes';
-import { PODCAST_DETAILS, TOP_PODCASTS } from './urls';
+import { PODCAST_EPISODES, TOP_PODCASTS } from './urls';
 
 describe('itunesService', () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('itunesService', () => {
             },
           }),
         };
-      } else if (url.includes(encodeURIComponent(PODCAST_DETAILS('123')))) {
+      } else if (url.includes(encodeURIComponent(PODCAST_EPISODES('123')))) {
         return {
           ok: true,
           status: 200,
@@ -39,8 +39,8 @@ describe('itunesService', () => {
   });
 
   test('fetches details and returns it', async () => {
-    const podcastDetails = await itunesService.getPodcastDetails('123');
-    expect(podcastDetails).toEqual(mockDetails);
+    const podcastEpisodes = await itunesService.getPodcastEpisodes('123');
+    expect(podcastEpisodes).toEqual(mockDetails);
   });
 
   test('throws an error when network getTopPodcasts response is not ok', async () => {
@@ -56,7 +56,7 @@ describe('itunesService', () => {
     );
   });
 
-  test('throws an error when network getPodcastDetails response is not ok', async () => {
+  test('throws an error when network getPodcastEpisodes response is not ok', async () => {
     window.fetch.mockImplementationOnce(() =>
       Promise.resolve({
         ok: false,
@@ -64,7 +64,7 @@ describe('itunesService', () => {
       })
     );
 
-    await expect(itunesService.getPodcastDetails()).rejects.toThrow(
+    await expect(itunesService.getPodcastEpisodes()).rejects.toThrow(
       'Network response was not ok.'
     );
   });

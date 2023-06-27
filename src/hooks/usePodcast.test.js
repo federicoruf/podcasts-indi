@@ -10,7 +10,7 @@ import itunesService from '../services/itunes';
 
 jest.mock('../services/itunes', () => ({
   getTopPodcasts: jest.fn(),
-  getPodcastDetails: jest.fn(),
+  getPodcastEpisodes: jest.fn(),
 }));
 
 describe('usePodcast', () => {
@@ -28,13 +28,13 @@ describe('usePodcast', () => {
 
   test('fetches and sets podcast details', async () => {
     const switchLoadingMock = jest.fn();
-    itunesService.getPodcastDetails.mockResolvedValue(mockPodcastEpisodes);
+    itunesService.getPodcastEpisodes.mockResolvedValue(mockPodcastEpisodes);
 
     const { result } = renderHook(() => usePodcast(switchLoadingMock));
     const episodes = await result.current.getPodcastEpisodes(
       mockPodcasts[0].id
     );
-    expect(itunesService.getPodcastDetails).toBeCalledWith(mockPodcasts[0].id);
+    expect(itunesService.getPodcastEpisodes).toBeCalledWith(mockPodcasts[0].id);
     expect(episodes).toHaveLength(2);
   });
 

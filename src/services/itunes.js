@@ -1,4 +1,4 @@
-import { CORS, PODCAST_DETAILS, TOP_PODCASTS } from './urls';
+import { CORS, PODCAST_EPISODES, TOP_PODCASTS } from './urls';
 
 const itunesService = {
   getTopPodcasts: async () => {
@@ -20,10 +20,10 @@ const itunesService = {
       throw error;
     }
   },
-  getPodcastDetails: async (id) => {
+  getPodcastEpisodes: async (id) => {
     try {
       const response = await fetch(
-        `${CORS}${encodeURIComponent(PODCAST_DETAILS(id))}`
+        `${CORS}${encodeURIComponent(PODCAST_EPISODES(id))}`
       );
       if (response.ok) {
         const responseJson = await response.json();
